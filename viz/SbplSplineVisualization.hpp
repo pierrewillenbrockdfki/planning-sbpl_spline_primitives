@@ -58,6 +58,6 @@ namespace vizkit3d
         Data* p;
     };
 
-    VizkitQtPlugin(SbplSplineVisualization)
+    VizkitQtPluginHeaderDecls(SbplSplineVisualization)
 }
 #endif

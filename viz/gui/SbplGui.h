@@ -1,6 +1,5 @@
 #pragma once
 #include <QObject>
-#include <QtWidgets>
 
 #ifndef Q_MOC_RUN
 #include <vizkit3d/Vizkit3DWidget.hpp>
@@ -8,6 +7,13 @@
 #include <vizkit3d/GridVisualization.hpp>
 #include <base/Eigen.hpp>
 #endif
+
+QT_BEGIN_NAMESPACE
+class QPushButton;
+class QDoubleSpinBox;
+class QCheckBox;
+class QWidget;
+QT_END_NAMESPACE
 
 class SbplGui : public QObject
 {
@@ -19,6 +25,7 @@ class SbplGui : public QObject
 public:
 
     SbplGui();    
+    ~SbplGui();
     void show();
 
 public slots:
@@ -57,7 +64,7 @@ private:
     QCheckBox* generateLateralMotionsCheckBox;
     QCheckBox* generateBackwardMotionsCheckBox;
     QCheckBox* generateForwardMotionsCheckBox;
-    QWidget window;
+    QWidget* window;
     vizkit3d::SbplSplineVisualization splineViz;
     vizkit3d::GridVisualization gridViz;
     sbpl_spline_primitives::SplinePrimitivesConfig config;

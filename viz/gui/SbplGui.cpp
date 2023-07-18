@@ -1,15 +1,25 @@
 #include "SbplGui.h"
 #include <QFileDialog>
 #include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QDoubleSpinBox>
+#include <QLabel>
+#include <QCheckBox>
 #include <thread>
 #include <boost/filesystem.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
 
-SbplGui::SbplGui(): QObject()
+SbplGui::SbplGui(): QObject(), window(nullptr)
 {
     setupUI();
     setupSbpl();
+}
+
+SbplGui::~SbplGui() {
+    if(window)
+        delete window;
 }
 
 void SbplGui::setupUI()
@@ -169,7 +179,8 @@ void SbplGui::setupUI()
 
 
     layout->addLayout(generateMotionsRow);
-    window.setLayout(layout);
+    window = new QWidget();
+    window->setLayout(layout);
 }
 
 void SbplGui::setupSbpl()
@@ -255,7 +266,7 @@ void SbplGui::generateLateralMotionsCheckBoxEditingFinished()
 
 void SbplGui::show()
 {
-    window.show();
+    window->show();
 }
 
 void SbplGui::computePressed()

@@ -197,3 +197,7 @@ void SbplSplineVisualization::addPrimitives(osg::Group* group,
   }
 }
 
+namespace vizkit3d
+{
+    VizkitQtPluginImpl(SbplSplineVisualization)
+}
