@@ -1,30 +1,18 @@
 find_package(Boost COMPONENTS system filesystem REQUIRED)
 
-if (ROCK_QT_VERSION_4)
-    rock_library(sbpl_viz_gui
-        SOURCES
-            SbplGui.cpp
-        HEADERS
-            SbplGui.h
-        MOC
-            SbplGui.h
-        DEPS sbpl_spline_primitives-viz
-        DEPS_PKGCONFIG vizkit3d base-types vizkit3d-viz base-viz
-    )
-endif(ROCK_QT_VERSION_4)
-
-if (ROCK_QT_VERSION_5)
-    rock_library(sbpl_viz_gui-qt5
-        SOURCES
-            SbplGui.cpp
-        HEADERS
-            SbplGui.h
-        MOC5
-            SbplGui.h
-        DEPS sbpl_spline_primitives-viz-qt5
-        DEPS_PKGCONFIG vizkit3d-qt5 base-types vizkit3d-viz-qt5 base-viz-qt5
-    )
-endif(ROCK_QT_VERSION_5)
+rock_qt_library(
+    TARGETPREFIX sbpl_viz_gui
+    QT4_SUFFIX ""
+    SOURCES
+        SbplGui.cpp
+    HEADERS
+        SbplGui.h
+    MOC
+        SbplGui.h
+    DEPS_QT sbpl_spline_primitives-viz
+    DEPS_PKGCONFIG base-types
+    DEPS_PKGCONFIG_QT vizkit3d vizkit3d-viz base-viz
+)
 
 if (ROCK_QT_VERSION_4)
     rock_executable(sbpl_spline_viz_bin
