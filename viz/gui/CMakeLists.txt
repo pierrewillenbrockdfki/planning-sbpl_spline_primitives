@@ -16,6 +16,14 @@ rock_qt_library(
 )
 
 if (TARGET sbpl_viz_gui)
+    target_include_directories(sbpl_viz_gui PRIVATE ${CMAKE_SOURCE_DIR}/viz)
+endif()
+
+if (TARGET sbpl_viz_gui-qt5)
+    target_include_directories(sbpl_viz_gui-qt5 PRIVATE ${CMAKE_SOURCE_DIR}/viz)
+endif()
+
+if (TARGET sbpl_viz_gui)
     rock_executable(sbpl_spline_viz_bin
         SOURCES
             main.cpp
